@@ -24,6 +24,7 @@ passport.use(new GoogleStrategy({
                 done(null, existingUser);
             } else {
                 // create new user
+                // Two instance of User and user in callback are same
                 new User({ googleId: profile.id })
                     .save()
                     .then(user => done(null, user));
